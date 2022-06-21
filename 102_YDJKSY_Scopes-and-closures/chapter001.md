@@ -1,12 +1,12 @@
 
-- [Chapter 001](./chapter001.md) - What’s the Scope? 
-- [Chapter 002](./chapter002.md) - Illustrating Lexical Scope 
-- [Chapter 003](./chapter003.md) - The Scope Chain 
-- [Chapter 004](./chapter004.md) - Around the Global Scope 
-- [Chapter 005](./chapter005.md) - The (Not So) Secret Lifecycle of Variables 
-- [Chapter 006](./chapter006.md) - Limiting Scope Exposure 
-- [Chapter 007](./chapter007.md) - Using Closures 
-- [Chapter 008](./chapter008.md) - The Module Pattern 
+- [Chapter 001](chapter001.md) - What’s the Scope? 
+- [Chapter 002](chapter002.md) - Illustrating Lexical Scope 
+- [Chapter 003](chapter003.md) - The Scope Chain 
+- [Chapter 004](chapter004.md) - Around the Global Scope 
+- [Chapter 005](chapter005.md) - The (Not So) Secret Lifecycle of Variables 
+- [Chapter 006](chapter006.md) - Limiting Scope Exposure 
+- [Chapter 007](chapter007.md) - Using Closures 
+- [Chapter 008](chapter008.md) - The Module Pattern 
 
 # Chapter 1: What’s the Scope? 
 - JS is typically classified as an interpreted scripting language, so it’s assumed by most that JS programs are processed in a single, top-down pass. But JS is in fact parsed/compiled in a separate phase before execution begins. 
