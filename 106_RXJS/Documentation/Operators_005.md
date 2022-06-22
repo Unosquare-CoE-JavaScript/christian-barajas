@@ -1,3 +1,25 @@
+
+## RxJS Notes
+- [Chapter 001](Documentation/README.md) - RxJS Documents
+    - [Summary](Documentation/README.md) 
+        - [Observable](Documentation/README.md#observable) 
+        - [RxJS Operators](Documentation/README.md#rxjs-operators) 
+    - [Operators](Documentation/Operators_001.md) 
+        - [Categories of Operators](Documentation/Operators_001.md#categories-of-operators) 
+        - [Creation Operators](Documentation/Operators_001.md#creation-operators) 
+        - [Join Creation Operators](Documentation/Operators_002.md#join-creation-operators) 
+        - [Transformation Operators](Documentation/Operators_003.md#transformation-operators) 
+        - [Filtering Operators](Documentation/Operators_004.md#filtering-operators) 
+        - [Join Operators](Documentation/Operators_005.md#join-operators) 
+        - [Multicasting Operators](Documentation/Operators_005.md#multicasting-operators) 
+        - [Error Handling Operators](Documentation/Operators_005.md#error-handling-operators) 
+        - [Utility Operators](Documentation/Operators_006.md#utility-operators) 
+        - [Conditional and Boolean Operators](Documentation/Operators_006.md#conditional-and-boolean-operators) 
+        - [Mathematical and Aggregate Operators](Documentation/Operators_006.md#mathematical-and-aggregate-operators) 
+    - [Subscriptions](Documentation/subscriptions_and_subjets.md#subscription) 
+    - [Subjets](Documentation/subscriptions_and_subjets.md#subjects) 
+    - [Schedulers](Documentation/subscriptions_and_subjets.md#schedulers) s
+
 # Categories of Operators 
 - There are operators for different purposes, and they may be categorized as: creation, transformation, filtering, joining, multicasting, error handling, utility, conditional/Boolean and Mathematical/Aggregate Operators. 
 
