@@ -1,0 +1,76 @@
+
+## RxJS Notes
+- [Summary](README.md) 
+    - [Observable](README.md#observable) 
+    - [RxJS Operators](README.md#rxjs-operators) 
+- [Operators](Operators_001.md) 
+    - [Categories of Operators](Operators_001.md#categories-of-operators) 
+    - [Creation Operators](Operators_001.md#creation-operators) 
+    - [Join Creation Operators](Operators_002.md#join-creation-operators) 
+    - [Transformation Operators](Operators_003.md#transformation-operators) 
+    - [Filtering Operators](Operators_004.md#filtering-operators) 
+    - [Join Operators](Operators_005.md#join-operators) 
+    - [Multicasting Operators](Operators_005.md#multicasting-operators) 
+    - [Error Handling Operators](Operators_005.md#error-handling-operators) 
+    - [Utility Operators](Operators_006.md#utility-operators) 
+    - [Conditional and Boolean Operators](Operators_006.md#conditional-and-boolean-operators) 
+    - [Mathematical and Aggregate Operators](Operators_006.md#mathematical-and-aggregate-operators) 
+- [Subscriptions](subscriptions_and_subjets.md#subscription) 
+- [Subjets](subscriptions_and_subjets.md#subjects) 
+- [Schedulers](subscriptions_and_subjets.md#schedulers) 
+
+# Categories of Operators 
+- There are operators for different purposes, and they may be categorized as: creation, transformation, filtering, joining, multicasting, error handling, utility, conditional/Boolean and Mathematical/Aggregate Operators. 
+
+## Filtering Operators 
+- `audit`: Ignores source values for a duration determined by another Observable, then emits the most recent value from the source Observable, then repeats this process. 
+    - It's like auditTime, but the silencing duration is determined by a second Observable. 
+    - emits the most recent value from the source Observable on the output Observable as soon as its internal timer becomes disabled, and ignores source values while the timer is enabled.  
+- `auditTime`: Ignores source values for duration milliseconds, then emits the most recent value from the source Observable, then repeats this process. 
+    - When it sees a source value, it ignores that plus the next ones for duration milliseconds, and then it emits the most recent value from the source. 
+- `debounce`: Emits a notification from the source Observable only after a particular time span determined by another Observable has passed without another source emission. but drops previous pending delayed emissions if a new notification arrives on the source Observable. 
+    - It's like `debounceTime`, but the time span of emission silence is determined by a second Observable. 
+    - Like `debounceTime`, this is a rate-limiting operator, and also a delay-like operator since output emissions do not necessarily occur at the same time as they did on the source Observable. 
+- `debounceTime`: Emits a notification from the source Observable only after a particular time span has passed without another source emission. 
+    - It's like delay, but passes only the most recent notification from each burst of emissions. 
+    - This is a rate-limiting operator, because it is impossible for more than one notification to be emitted in any time window of duration dueTime, but it is also a delay-like operator since output emissions do not occur at the same time as they did on the source Observable. Optionally takes a SchedulerLike for managing timers. 
+- `distinct`: Returns an Observable that emits all items emitted by the source Observable that are distinct by comparison from previous items. 
+    - If a keySelector function is provided, then it will project each value from the source observable into a new value that it will check for equality with previously projected values. If the keySelector function is not provided, it will use each value from the source observable directly with an equality check against previous values. 
+- `distinctUntilChanged`: Returns a result Observable that emits all values pushed by the source observable if they are distinct in comparison to the last value the result observable emitted. 
+    - comparator: Optional. Default is undefined. A function used to compare the previous and current keys for equality. Defaults to a === check. 
+    - keySelector: Optional. Default is identity as (value: T) => K. Used to select a key value to be passed to the comparator. 
+- `distinctUntilKeyChanged`: Returns an Observable that emits all items emitted by the source Observable that are distinct by comparison from the previous item, using a property accessed by using the key provided to check if the two items are distinct. 
+    - If a comparator function is provided, then it will be called for each item to test for whether or not that value should be emitted. 
+    - If a comparator function is not provided, an equality check is used by default. 
+- `elementAt`: Emits the single value at the specified index in a sequence of emissions from the source Observable. 
+    - Emits only the index value passed (i-th) value, then completes. 
+- `filter`: Filter items emitted by the source Observable by only emitting those that satisfy a specified predicate. 
+    - Like Array.prototype.filter(), it only emits a value from the source if it passes a criterion function. 
+- `first`: Emits only the first value (or the first value that meets some condition) emitted by the source Observable. 
+    - Emits only the first value. Or emits only the first value that passes some test. 
+- `ignoreElements`: Ignores all items emitted by the source Observable and only passes calls of complete or error. 
+    - The ignoreElements operator suppresses all items emitted by the source Observable, but allows its termination notification (either error or complete) to pass through unchanged. 
+- `last`: Returns an Observable that emits only the last item emitted by the source Observable. 
+    - It optionally takes a predicate function as a parameter, in which case, rather than emitting the last item from the source Observable, the resulting Observable will emit the last item from the source Observable that satisfies the predicate. 
+- `sample`: Emits the most recently emitted value from the source Observable whenever another Observable, the notifier, emits. 
+    - It's like `sampleTime`, but samples whenever the notifier Observable emits something. 
+- `sampleTime`: Emits the most recently emitted value from the source Observable within periodic time intervals. 
+    - Samples the source Observable at periodic time intervals, emitting what it samples. 
+- `single`: Returns an observable that asserts that only one value is emitted from the observable that matches the predicate. If no predicate is provided, then it will assert that the observable only emits one value. 
+    - In the event that two values are found that match the predicate, or when there are two values emitted and no predicate, it will throw a SequenceError. 
+    - In the event that no values match the predicate, if one is provided, it will throw a NotFoundError 
+- `skip`: Returns an Observable that skips the first count items emitted by the source Observable. 
+- `skipLast`: Skip a specified number of values before the completion of an observable. 
+- `skipUntil`: Returns an Observable that skips items emitted by the source Observable until a second Observable emits an item. 
+- `skipWhile`: Returns an Observable that skips all items emitted by the source Observable as long as a specified condition holds true, but emits all further source items as soon as the condition becomes false. 
+- `take`: Emits only the first count values emitted by the source Observable. 
+    - Takes the first count values from the source, then completes. 
+- `takeLast`: Waits for the source to complete, then emits the last N values from the source, as specified by the count argument. 
+- `takeUntil`: Emits the values emitted by the source Observable until a notifier Observable emits a value. 
+    - Lets values pass until a second Observable, notifier, emits a value. Then, it completes. 
+- `takeWhile`: Emits values emitted by the source Observable so long as each value satisfies the given predicate, and then completes as soon as this predicate is not satisfied. 
+    - Takes values from the source only while they pass the condition given. When the first value does not satisfy, it completes. 
+- `throttle`: Emits a value from the source Observable, then ignores subsequent source values for a duration determined by another Observable, then repeats this process. 
+    - It's like `throttleTime`, but the silencing duration is determined by a second Observable. 
+- `throttleTime`: Emits a value from the source Observable, then ignores subsequent source values for duration milliseconds, then repeats this process. 
+    - Lets a value pass, then ignores source values for the next duration milliseconds. 
