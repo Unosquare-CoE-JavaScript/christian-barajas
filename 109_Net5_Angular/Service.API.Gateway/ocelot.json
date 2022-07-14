@@ -1,0 +1,162 @@
+{
+  "Routes": [
+    {
+
+      "DownstreamPathTemplate": "/api/Users/Session",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7777
+        }
+      ],
+      "UpstreamPathTemplate": "/api/v0/auth/session",
+      "UpstreamHttpMethod": [ "GET" ]
+    },
+    {
+
+      "DownstreamPathTemplate": "/api/Users/Register",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7777
+        }
+      ],
+      "UpstreamPathTemplate": "/api/v0/auth/Register",
+      "UpstreamHttpMethod": [ "POST" ]
+    },
+    {
+
+      "DownstreamPathTemplate": "/api/Users/login",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7777
+        }
+      ],
+      "UpstreamPathTemplate": "/api/v0/auth/login",
+      "UpstreamHttpMethod": [ "POST" ]
+    },
+    {
+
+      "DownstreamPathTemplate": "/api/Author",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 40974
+        }
+      ],
+      "UpstreamPathTemplate": "/api/v0/authors",
+      "UpstreamHttpMethod": [ "POST", "GET", "UPDATE", "DELETE" ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      }
+    },
+    {
+
+      "DownstreamPathTemplate": "/api/Author/{AuthorId}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 40974
+        }
+      ],
+      "UpstreamPathTemplate": "/api/v0/authors/{AuthorId}",
+      "UpstreamHttpMethod": [ "GET", "UPDATE", "DELETE" ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      }
+    },
+    {
+
+      "DownstreamPathTemplate": "/api/Author/Query",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 40974
+        }
+      ],
+      "UpstreamPathTemplate": "/api/v0/authors/Query",
+      "UpstreamHttpMethod": [ "POST" ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      }
+    },
+    {
+
+      "DownstreamPathTemplate": "/api/Author/QueryByItem",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 40974
+        }
+      ],
+      "UpstreamPathTemplate": "/api/v0/authors/QueryByItem",
+      "UpstreamHttpMethod": [ "POST" ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      }
+    },
+    {
+
+      "DownstreamPathTemplate": "/api/Books",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 40974
+        }
+      ],
+      "UpstreamPathTemplate": "/api/v0/books",
+      "UpstreamHttpMethod": [ "POST", "GET" ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      }
+    },
+    {
+
+      "DownstreamPathTemplate": "/api/Books/{BookId}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 40974
+        }
+      ],
+      "UpstreamPathTemplate": "/api/v0/books/{BookId}",
+      "UpstreamHttpMethod": [ "GET" ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      }
+    },
+    {
+
+      "DownstreamPathTemplate": "/api/Books/Query",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 40974
+        }
+      ],
+      "UpstreamPathTemplate": "/api/v0/books/Query",
+      "UpstreamHttpMethod": [ "POST" ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      }
+    }
+  ]
+}

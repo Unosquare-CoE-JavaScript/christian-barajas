@@ -1,0 +1,49 @@
+<h1>My Favorite Books</h1>
+
+<div fxLayoutAlign="center center">
+  <mat-form-field fxFlex="60%">
+    <input
+      matInput
+      type="text"
+      (keyup)="onFilter($event)"
+      placeholder="Filter"
+    />
+  </mat-form-field>
+</div>
+<mat-table [dataSource]="dataSource" matSort (matSortChange)="sortByColumns($event)">
+  <ng-container matColumnDef="title">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Title</mat-header-cell>
+    <mat-cell *matCellDef="let row">{{ row.title }}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="description">
+    <mat-header-cell *matHeaderCellDef mat-sort-header
+      >Description</mat-header-cell
+    >
+    <mat-cell *matCellDef="let row">{{ row.description }}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="author">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Author</mat-header-cell>
+    <mat-cell *matCellDef="let row">{{ row.author?.fullName }}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="price">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Price</mat-header-cell>
+    <mat-cell *matCellDef="let row">{{ row.price }}</mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="deployColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: deployColumns"></mat-row>
+</mat-table>
+<mat-paginator
+  #paginator
+  [pageSize]="itemsPerPage"
+  [pageSizeOptions]="pageSizeOptions"
+  [length]="pageQuantity"
+  (page)="eventPaginator($event)"
+  ></mat-paginator>
+
+<button mat-fab id="button-add" color="warn" (click)="onButtonAdd()">
+  <mat-icon>add</mat-icon>
+</button>
