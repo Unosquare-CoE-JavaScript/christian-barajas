@@ -1,0 +1,21 @@
+<div class="bar-menu" fxFlex fxLayout="row" fxLayoutAlign="flex-end" fxHide.xs>
+  <ul
+    fxLayout="row"
+    class="navigation-menu"
+    fxLayoutGap="10px"
+
+  >
+    <li>
+      <a [routerLink]="['/']" >Home</a>
+    </li>
+    <li *ngIf="!(isLoggedIn$ | async)">
+      <a [routerLink]="['/auth/register']">Register</a>
+    </li>
+    <li *ngIf="!(isLoggedIn$ | async)">
+      <a [routerLink]="['/auth/login']" >Login</a>
+    </li>
+    <li *ngIf="(isLoggedIn$ | async)">
+      <a (click)="logout()" >logout</a>
+    </li>
+  </ul>
+</div>

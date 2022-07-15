@@ -1,0 +1,106 @@
+<section>
+  <form
+    fxLayout="column"
+    fxLayoutAlign="center center"
+    #f="ngForm"
+    (ngSubmit)="register(f)"
+    fxLayoutGap="10px"
+  >
+    <mat-form-field class="">
+      <mat-label>Fisrt name:</mat-label>
+      <input
+        type="text"
+        matInput
+        placeholder="First name"
+        ngModel
+        name="firstName"
+        required
+        #firstNameInput="ngModel"
+      />
+      <mat-error *ngIf="firstNameInput.hasError('required')">
+        <span>El First Name no puede estar en blanco</span>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="">
+      <mat-label>Last name:</mat-label>
+      <input
+        type="text"
+        matInput
+        placeholder="Last name"
+        ngModel
+        name="lastName"
+        required
+        #lastNameInput="ngModel"
+      />
+      <mat-error *ngIf="lastNameInput.hasError('required')">
+        <span>El Username no puede estar en blanco</span>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="">
+      <mat-label>Username:</mat-label>
+      <input
+        type="text"
+        matInput
+        placeholder="Username"
+        ngModel
+        name="username"
+        required
+        #usernameInput="ngModel"
+      />
+      <mat-error *ngIf="usernameInput.hasError('required')">
+        <span>El Username no puede estar en blanco</span>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="">
+      <mat-label>Email:</mat-label>
+      <input
+        type="email"
+        matInput
+        placeholder="email@email.com"
+        ngModel
+        name="email"
+        email
+        required
+        #emailInput="ngModel"
+      />
+      <mat-error *ngIf="emailInput.hasError('required')">
+        <span>El Email no puede estar en blanco</span>
+      </mat-error>
+      <mat-error *ngIf="emailInput.hasError('email')">
+        <span>El Email es invalido</span>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="">
+      <mat-label>Password:</mat-label>
+      <input
+        type="password"
+        matInput
+        placeholder="******"
+        ngModel
+        name="password"
+        required
+        minlength="8"
+        #passwordInput="ngModel"
+      />
+      <mat-error *ngIf="passwordInput.hasError('required')">
+        <span>La contaseña no puede estar en blanco</span>
+      </mat-error>
+      <mat-error *ngIf="passwordInput.hasError('minlength')">
+        <span>La contaseña debe tener más de 8 characteres</span>
+      </mat-error>
+    </mat-form-field>
+
+    <button
+      type="submit"
+      mat-raised-button
+      color="primary"
+      [disabled]="f.invalid"
+    >
+      <span>Save</span>
+    </button>
+  </form>
+</section>

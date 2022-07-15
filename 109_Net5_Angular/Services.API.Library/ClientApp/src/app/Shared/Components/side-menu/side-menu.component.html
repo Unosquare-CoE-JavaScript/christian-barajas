@@ -1,0 +1,28 @@
+<mat-nav-list>
+  <a mat-list-item [routerLink]="['/']" (click)="onToggleMenu()">
+    <mat-icon>home</mat-icon>
+    <span class="navigation-list-label">Home</span>
+  </a>
+  <a *ngIf="(isLoggedIn$ | async)" mat-list-item [routerLink]="['/books/list']"  (click)="onToggleMenu()">
+    <mat-icon>how_to_reg</mat-icon>
+    <span class="navigation-list-label">Books</span>
+  </a>
+  <a *ngIf="(isLoggedIn$ | async)" mat-list-item [routerLink]="['/authors/list']"  (click)="onToggleMenu()">
+    <mat-icon>how_to_reg</mat-icon>
+    <span class="navigation-list-label">Authors</span>
+  </a>
+  <a *ngIf="!(isLoggedIn$ | async)" mat-list-item [routerLink]="['/auth/register']"  (click)="onToggleMenu()">
+    <mat-icon>how_to_reg</mat-icon>
+    <span class="navigation-list-label">Register</span>
+  </a>
+  <a *ngIf="!(isLoggedIn$ | async)" mat-list-item [routerLink]="['/auth/login']"  (click)="onToggleMenu()">
+    <mat-icon>login</mat-icon>
+    <span class="navigation-list-label">Login</span>
+  </a>
+  <mat-list-item *ngIf="(isLoggedIn$ | async)">
+    <button mat-icon-button (click)="logout()">
+      <mat-icon>eject</mat-icon>
+      <span class="navigation-list-label">Logout</span>
+    </button>
+  </mat-list-item>
+</mat-nav-list>
