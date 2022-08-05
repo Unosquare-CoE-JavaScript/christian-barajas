@@ -34,7 +34,7 @@
 - **Declarative unsubscription management**, it's more declarative and cleaner; it uses the RxJS `takeUntil` operator. 
 - The `takeUntil()` operator takes values from the source Observable until the Observable notifier passed on by parameter emits a value. 
 - Additionally, you can use other operators that manage the unsubscription for you in a more reactive way: 
-    - `take(x)`: This emits x values and then completes, However, bear in mind that if your network is slow and the x-th emission didn'0t happen, then you have to unsubscribe. 
+    - `take(x)`: This emits x values and then completes, However, bear in mind that if your network is slow and the x-th emission didn't happen, then you have to unsubscribe. 
     - `first()`: This emits the first value and then completes. 
     - `last()`: This emits the last value and then completes. 
 
